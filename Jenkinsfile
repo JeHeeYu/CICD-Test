@@ -4,13 +4,13 @@ pipeline {
   stages {
     stage('Build Docker') {
       steps {
-        sh '/opt/homebrew/bin/docker-compose build'
+        sh '/usr/local/bin/docker-compose build'
       }
     }
 
     stage('Run Docker') {
       steps {
-        sh '/opt/homebrew/bin/docker-compose up -d'
+        sh '/usr/local/bin/docker-compose up -d'
       }
     }
   }
