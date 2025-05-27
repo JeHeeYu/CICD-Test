@@ -8,16 +8,17 @@ pipeline {
       }
     }
 
-    stage('Test') {
+    stage('Test & Run Check') {
       steps {
         dir('/Users/yjh/.jenkins/workspace/cicd-local-test') {
           sh 'npm install'
           sh 'npm test'
+          sh 'node index.js'
         }
       }
     }
 
-    stage('Stop & Run Docker') {
+    stage('Deploy') {
       steps {
         sh '''
           /usr/local/bin/docker-compose down || true
