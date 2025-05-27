@@ -10,7 +10,7 @@ pipeline {
 
     stage('Run Docker') {
       steps {
-        sh '/usr/local/bin/docker-compose up -d'
+        sh '/usr/local/bin/docker-compose up -d --force-recreate'
       }
     }
   }
