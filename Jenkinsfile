@@ -8,9 +8,12 @@ pipeline {
       }
     }
 
-    stage('Run Docker') {
+    stage('Stop & Run Docker') {
       steps {
-        sh '/usr/local/bin/docker-compose up -d --force-recreate'
+        sh '''
+          /usr/local/bin/docker-compose down || true
+          /usr/local/bin/docker-compose up -d
+        '''
       }
     }
   }
