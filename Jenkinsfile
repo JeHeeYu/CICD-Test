@@ -1,16 +1,20 @@
 pipeline {
   agent any
 
+  tools {
+    nodejs "Node 20"
+  }
+
   stages {
     stage('Build Docker') {
       steps {
-        sh '/usr/local/bin/docker-compose build'
+        sh 'docker-compose build'
       }
     }
 
     stage('Test & Run Check') {
       steps {
-        dir('/Users/yjh/.jenkins/workspace/cicd-local-test') {
+        dir('./') {
           sh 'npm install'
           sh 'npm test'
           sh 'node index.js'
@@ -21,8 +25,8 @@ pipeline {
     stage('Deploy') {
       steps {
         sh '''
-          /usr/local/bin/docker-compose down || true
-          /usr/local/bin/docker-compose up -d
+          docker-compose down || true
+          docker-compose up -d
         '''
       }
     }
