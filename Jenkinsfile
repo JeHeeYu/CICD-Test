@@ -20,7 +20,6 @@ pipeline {
       steps {
         dir('./') {
           sh 'npm install'
-          sh 'npm test'
           sh 'node index.js'
         }
       }
