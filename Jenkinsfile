@@ -8,6 +8,15 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        dir('/Users/yjh/.jenkins/workspace/cicd-local-test') {
+          sh 'npm install'
+          sh 'npm test'
+        }
+      }
+    }
+
     stage('Stop & Run Docker') {
       steps {
         sh '''
