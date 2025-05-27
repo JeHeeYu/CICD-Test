@@ -1,3 +1,3 @@
-console.log("Init")
+console.log("Init 111")
 
-TEST
+console.log("Init 222")
