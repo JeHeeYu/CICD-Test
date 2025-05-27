@@ -5,6 +5,10 @@ pipeline {
     nodejs "Node 20"
   }
 
+  environment {
+    PATH = "/usr/local/bin:$PATH"
+  }
+
   stages {
     stage('Build Docker') {
       steps {
